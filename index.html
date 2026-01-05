@@ -1,1 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documenting Black American continuity, contribution, and culture. A living archive of monuments, historical evidence, and cultural moments.">
+    <title>The Freedmen Star | Living Archive of Black American Heritage</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --gray-dark: #2a2a2a;
+            --gray: #666666;
+            --gray-light: #999999;
+            --red: #d73027;
+            --gold: #d4af37;
+            --cream: #faf8f3;
+            --white: #ffffff;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--cream);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--red);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .logo-lockup {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--charcoal);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.3px;
+        }
+
+        .main-nav a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 32px;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .main-nav a:hover {
+            color: var(--red);
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 68px;
+            background: var(--black);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-media {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent);
+            padding: 60px 24px 40px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray-light);
+            max-width: 600px;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--charcoal);
+            border-bottom: 2px solid var(--red);
+        }
+
+        .stats-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 68px;
+            z-index: 50;
+        }
+
+        .filter-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--gray-light);
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--gold);
+            border-color: var(--black);
+        }
+
+        /* Archive Grid */
+        .archive {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .archive-item {
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .archive-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: var(--gray-dark);
+        }
+
+        .item-content {
+            padding: 20px;
+        }
+
+        .item-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .item-type {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .item-date {
+            font-size: 12px;
+            color: var(--gray-light);
+        }
+
+        .item-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .item-location {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+
+        .item-excerpt {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Entry Page */
+        .entry-hero {
+            margin-top: 68px;
+            background: var(--black);
+        }
+
+        .entry-image {
+            width: 100%;
+            height: 60vh;
+            object-fit: contain;
+            background: var(--black);
+        }
+
+        .entry-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .entry-header {
+            margin-bottom: 40px;
+        }
+
+        .entry-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .meta-item strong {
+            color: var(--red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .entry-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .entry-body {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--charcoal);
+        }
+
+        .entry-body h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 24px;
+            margin: 40px 0 16px;
+            color: var(--black);
+        }
+
+        .entry-body p {
+            margin-bottom: 20px;
+        }
+
+        .entry-body strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* About Page */
+        .about-section {
+            max-width: 800px;
+            margin: 120px auto 80px;
+            padding: 0 24px;
+        }
+
+        .about-section h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 32px;
+        }
+
+        .mission-statement {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 40px;
+            padding-left: 24px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .about-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+            margin: 48px 0 16px;
+        }
+
+        .about-section p {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .about-section ul {
+            margin: 20px 0;
+            padding-left: 24px;
+        }
+
+        .about-section li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .curator-signature {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--black);
+            color: var(--gray-light);
+            border-top: 2px solid var(--red);
+            padding: 48px 24px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-about h3 {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .footer-links h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-nav {
+                display: none;
+            }
+
+            .stats-inner {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .archive-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-media {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HOMEPAGE -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="logo-lockup">
+                <div class="logo-mark">★</div>
+                <div class="logo-text">THE FREEDMEN STAR</div>
+            </a>
+            <nav class="main-nav">
+                <a href="#archive">Archive</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=1600" alt="Emancipation monument" class="hero-image">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1 class="hero-title">THE FREEDMEN STAR</h1>
+                    <p class="hero-subtitle">Documenting Black American continuity, contribution, and culture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="stat-number">267</div>
+                <div class="stat-label">Items Documented</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1662-2025</div>
+                <div class="stat-label">Timeline Span</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">18</div>
+                <div class="stat-label">States Covered</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-inner">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Monuments</button>
+            <button class="filter-btn">Historical Photos</button>
+            <button class="filter-btn">Exhibitions</button>
+            <button class="filter-btn">Cultural Events</button>
+            <button class="filter-btn">Documents</button>
+        </div>
+    </div>
+
+    <main class="archive" id="archive">
+        <div class="archive-grid">
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600" alt="Emancipation monument" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Monument</span>
+                        <span class="item-date">Documented Jan 2025</span>
+                    </div>
+                    <h3 class="item-title">Emancipation and Freedom Monument</h3>
+                    <p class="item-location">Lincoln Park, Washington DC</p>
+                    <p class="item-excerpt">Controversial monument depicting enslaved man breaking chains. First monument dedicated to Lincoln, funded entirely by freedmen...</p>
+                </div>
+            </article>
+
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=600" alt="Historical military photo" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Historical Photo</span>
+                        <span class="item-date">1860s</span>
+                    </div>
+                    <h3 class="item-title">United States Colored Troops</h3>
+                    <p class="item-location">Civil War Era</p>
+                    <p class="item-excerpt">Nearly 200,000 Black men served in the Union Army and Navy during the Civil War. These are the soldiers who fought for their own freedom...</p>
+                </div>
+            </article>
+
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600" alt="Museum exhibit" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Exhibition</span>
+                        <span class="item-date">Visited Dec 2024</span>
+                    </div>
+                    <h3 class="item-title">National Museum of African American History</h3>
+                    <p class="item-location">Washington, DC</p>
+                    <p class="item-excerpt">Permanent collection showcasing 400 years of Black American history. Particularly powerful displays on Reconstruction era contributions...</p>
+                </div>
+            </article>
+
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600" alt="Monument detail" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Monument</span>
+                        <span class="item-date">Documented Jan 2025</span>
+                    </div>
+                    <h3 class="item-title">Family Reaching Forward</h3>
+                    <p class="item-location">Richmond, VA</p>
+                    <p class="item-excerpt">Monument depicting freedmen family moving forward after emancipation. Inscription: "It seemed like reaching for the sky..."</p>
+                </div>
+            </article>
+
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600" alt="Cultural event" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Cultural Event</span>
+                        <span class="item-date">Dec 2024</span>
+                    </div>
+                    <h3 class="item-title">Juneteenth Celebration</h3>
+                    <p class="item-location">Richmond, VA</p>
+                    <p class="item-excerpt">Community celebration marking emancipation. Music, food, oral histories shared. Continuity of tradition from 1865 to present...</p>
+                </div>
+            </article>
+
+            <article class="archive-item">
+                <img src="https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=600" alt="Historical document" class="item-image">
+                <div class="item-content">
+                    <div class="item-meta">
+                        <span class="item-type">Document</span>
+                        <span class="item-date">1865</span>
+                    </div>
+                    <h3 class="item-title">Freedmen's Bureau Records</h3>
+                    <p class="item-location">National Archives</p>
+                    <p class="item-excerpt">Official records documenting transition from slavery to freedom. Marriage certificates, labor contracts, educational records...</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- INDIVIDUAL ENTRY PAGE (Hidden by default, shown when clicking item) -->
+    <div style="display: none;">
+        <section class="entry-hero">
+            <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=1600" alt="Emancipation monument full view" class="entry-image">
+        </section>
+
+        <article class="entry-content">
+            <header class="entry-header">
+                <div class="entry-meta">
+                    <div class="meta-item">
+                        <strong>Monument</strong>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Location:</strong> Lincoln Park, Washington DC
+                    </div>
+                    <div class="meta-item">
+                        <strong>Documented:</strong> January 2025
+                    </div>
+                </div>
+                <h1 class="entry-title">Emancipation and Freedom Monument</h1>
+            </header>
+
+            <div class="entry-body">
+                <p>This monument stands in Lincoln Park, Washington DC. Dedicated in 1876, it was the first monument to Abraham Lincoln and the first major public monument in the United States funded entirely by formerly enslaved people.</p>
+
+                <p>The inscription reads: "Freedom's Memorial. In grateful memory of Abraham Lincoln. This monument was erected by the Western Sanitary Commission of Saint Louis, Mo.: with funds contributed solely by emancipated citizens of the United States declared free by his proclamation January 1st, A.D. 1863."</p>
+
+                <h2>Historical Context</h2>
+
+                <p>What makes this monument significant is not just what it depicts, but <strong>who paid for it</strong>. Charlotte Scott, a formerly enslaved woman from Virginia, donated the first $5 in 1865 - the day after Lincoln's assassination. Over 11 years, freedmen across the country contributed to complete the monument.</p>
+
+                <p>The depiction itself has been controversial since its unveiling. Frederick Douglass, speaking at the dedication, questioned whether it truly represented freedom or merely the transition from bondage. The formerly enslaved man is shown breaking chains but still kneeling, which many interpret as subservient rather than triumphant.</p>
+
+                <h2>Why It Matters</h2>
+
+                <p>This monument represents <strong>agency</strong>. It wasn't commissioned by the government or white philanthropists. It was funded entirely by people who had been enslaved, who chose to memorialize not just Lincoln but their own emancipation.</p>
+
+                <p>The controversy around its imagery doesn't diminish its historical significance - it enhances it. It shows how freedmen engaged with their own representation from the very beginning, how they claimed the right to tell their story even when that story was complicated.</p>
+
+                <p>This is evidence of continuity. From 1865 forward, Black Americans have been actively documenting, memorializing, and asserting their place in this nation's history.</p>
+            </div>
+        </article>
+    </div>
+
+    <!-- ABOUT PAGE (Hidden by default) -->
+    <div style="display: none;">
+        <section class="about-section" id="about">
+            <h1>About The Freedmen Star</h1>
+
+            <div class="mission-statement">
+                <p>This is a living archive of Black American heritage - documented as encountered, preserved as evidence, presented without apology.</p>
+            </div>
+
+            <p>We are the continuous people. Not diaspora. Not immigrants. The descendants of enslaved people who were here while the nation was being built, who remained through every era, whose lineage is unbroken.</p>
+
+            <h2>What This Archive Documents</h2>
+
+            <ul>
+                <li><strong>Monuments and memorials</strong> to our contributions and our people</li>
+                <li><strong>Historical evidence</strong> of our presence and building from 1619 forward</li>
+                <li><strong>Cultural expressions and innovations</strong> that shaped American identity</li>
+                <li><strong>The continuous line</strong> from founding era to present day</li>
+            </ul>
+
+            <h2>What This Is Not</h2>
+
+            <p>This is not focused on victimhood. This is focused on what we built, created, and contributed.</p>
+
+            <p>This is not about the African diaspora. This is specifically about American Descendants of Slavery and post-emancipation Freedmen - those whose lineage is tied to U.S. soil.</p>
+
+            <p>This is not political advocacy or reparations activism. This is documentation. Evidence. Memory work.</p>
+
+            <h2>The Ideological Foundation</h2>
+
+            <p>Like Indigenous peoples have their nations and histories, like Palestinians document their continuous presence, we document ours. Not claiming the state or its violence - but claiming our contributions, our culture, our unbreakable line.</p>
+
+            <p>We are not part of "African-American" as a hyphenated identity suggesting dual belonging. We are Americans whose ancestors were forced here, who built this nation's infrastructure and culture, who remained through every era. Our lineage is continuous where most others' is not.</p>
+
+            <p>This is our story. Our evidence. Our legacy.</p>
+
+            <div class="curator-signature">
+                <p>— Ronnie, Curator<br>Richmond, VA<br>Est. 2024</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-about">
+                <h3>The Freedmen Star</h3>
+                <p>A living archive documenting Black American continuity, contribution, and culture. We are the continuous people - descendants of those who were here while the nation was being built, who remained through every era, whose lineage is unbroken.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Submit Documentation Lead</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Freedmen Star. Culture, Lineage, Legacy.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In production, this would filter the grid items
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 68;
+                    const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
