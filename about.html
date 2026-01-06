@@ -1,322 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About The Freedmen Star - documenting Black American continuity and contributions">
-    <title>About | The Freedmen Star</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --black: #0a0a0a;
-            --charcoal: #1a1a1a;
-            --gray-dark: #2a2a2a;
-            --gray: #666666;
-            --gray-light: #999999;
-            --red: #d73027;
-            --gold: #d4af37;
-            --cream: #faf8f3;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--charcoal);
-            background: var(--cream);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--red);
-            z-index: 1000;
-        }
-
-        .header-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 68px;
-        }
-
-        .logo-lockup {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            background: var(--charcoal);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .logo-text {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.3px;
-        }
-
-        .main-nav a {
-            color: var(--gray-light);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            margin-left: 32px;
-            transition: color 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .main-nav a:hover {
-            color: var(--red);
-        }
-
-        .about-section {
-            max-width: 800px;
-            margin: 120px auto 80px;
-            padding: 0 24px;
-        }
-
-        .about-section h1 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 32px;
-        }
-
-        .mission-statement {
-            font-size: 20px;
-            line-height: 1.7;
-            color: var(--charcoal);
-            margin-bottom: 40px;
-            padding-left: 24px;
-            border-left: 4px solid var(--gold);
-        }
-
-        .about-section h2 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--black);
-            margin: 48px 0 16px;
-        }
-
-        .about-section p {
-            font-size: 17px;
-            line-height: 1.75;
-            color: var(--charcoal);
-            margin-bottom: 20px;
-        }
-
-        .about-section ul {
-            margin: 20px 0;
-            padding-left: 24px;
-        }
-
-        .about-section li {
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-
-        .curator-signature {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            font-style: italic;
-            color: var(--gray);
-        }
-
-        .site-footer {
-            background: var(--black);
-            color: var(--gray-light);
-            border-top: 2px solid var(--red);
-            padding: 48px 24px 32px;
-        }
-
-        .footer-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 60px;
-        }
-
-        .footer-about h3 {
-            font-family: 'Libre Baskerville', serif;
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        .footer-about p {
-            font-size: 15px;
-            line-height: 1.7;
-            max-width: 500px;
-        }
-
-        .footer-links h4 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .footer-links a {
-            display: block;
-            color: var(--gray-light);
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 10px;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--red);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 40px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 13px;
-        }
-
-        @media (max-width: 900px) {
-            .main-nav {
-                display: none;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="logo-lockup">
-                <div class="logo-mark">★</div>
-                <div class="logo-text">THE FREEDMEN STAR</div>
-            </a>
-            <nav class="main-nav">
-                <a href="index.html">Archive</a>
-                <a href="about.html">About</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="about-section">
+<section class="about-section">
         <h1>About The Freedmen Star</h1>
 
         <div class="mission-statement">
-            <p>I document Black American heritage as I encounter it - monuments I visit, exhibitions I attend, historical photos I find, cultural moments I witness. This is a personal archive of continuity, contribution, and culture.</p>
+            <p>I document Black American heritage as I encounter it. Monuments, exhibitions, historical photos, cultural moments - preserved and shared as a living archive.</p>
         </div>
 
-        <h2>Why This Exists</h2>
+        <h2>What This Is</h2>
 
-        <p>Black Americans have been present from the earliest stages of this nation. We were here while the country was being built. Our labor constructed the infrastructure. Our innovations shaped the culture. Our lineage developed continuously on this soil across generations.</p>
+        <p>This is personal documentation work. When I visit a monument, I photograph it and learn its context. When I attend an exhibition, I capture what's on display. When I find historical photos or documents, I preserve them here.</p>
 
-        <p>Yet our story is often told incompletely - either reduced to suffering alone, or framed as recent arrivals seeking inclusion. Neither captures the reality: we are among the most continuous populations in America, with deeper generational roots than most who claim this country as theirs.</p>
+        <p>It's field work. A running record of what I find significant. Not academic research, not comprehensive coverage - just one person documenting what crosses my path.</p>
 
-        <p>This archive exists to document that reality. Not to argue for it, but to show it. Through monuments, through historical evidence, through the cultural contributions that are undeniably ours.</p>
+        <h2>The Scope</h2>
 
-        <h2>What I Document</h2>
+        <p>I focus on American Descendants of Slavery and post-emancipation Freedmen heritage. The direct line - people whose ancestors were enslaved here, who stayed, who built families and communities on this land across generations.</p>
 
-        <p>I focus specifically on the heritage of American Descendants of Slavery and post-emancipation Freedmen. This means documentation follows a direct line: people whose ancestors were enslaved in what became the United States, who remained here, whose families built communities and culture across centuries on this land.</p>
+        <p>That's the through-line. Everything documented here follows that connection.</p>
 
-        <p>When I visit a monument, I photograph it and research its context. When I attend an exhibition, I document what's on display and why it matters. When I find historical photos or documents, I preserve and share them with proper context.</p>
+        <h2>What to Expect</h2>
 
-        <p>This isn't genealogy research or academic scholarship. It's field work. It's memory preservation. It's showing what exists before it's forgotten.</p>
+        <p>Content varies by what I encounter. Some entries are monuments I've visited in Richmond or DC. Some are historical photos I've come across. Some are exhibitions I've attended, with documentation of what was displayed and why it matters.</p>
 
-        <h2>What Makes This Different</h2>
+        <p>There's no posting schedule. Things get added when I document them. Could be weekly, could be monthly. The archive grows as I find material worth preserving.</p>
 
-        <p>Most heritage narratives emphasize either struggle or assimilation. This archive emphasizes building and creating. Not to minimize the brutality of slavery or segregation, but to recognize that survival itself was an act of resistance - and what emerged from that survival was profound.</p>
+        <h2>How It Works</h2>
 
-        <p>We built literal infrastructure: railroads, buildings, agricultural systems. We created legal frameworks through court challenges that expanded rights for everyone. We invented musical forms that became the foundation of American culture. We established institutions that still stand today.</p>
+        <p>Each documented item includes context - where it is, when I found it, what it represents, why it's here. The goal is to create a searchable, browsable collection that makes this material accessible and preserves it long-term.</p>
 
-        <p>That story deserves documentation with the same weight given to other founding populations. Not as a subcategory of "African-American studies" but as American history, period.</p>
-
-        <h2>The Continuity Argument</h2>
-
-        <p>Here's something rarely acknowledged: Black Americans today are often more genealogically connected to the founding era than most white Americans are.</p>
-
-        <p>The enslaved population remained continuous - born here, reproducing here, tied to this land across generations. Meanwhile, the white population was transformed by massive immigration waves (1880s-1960s). Ellis Island-era arrivals and their descendants now comprise the majority of white Americans.</p>
-
-        <p>This means modern white Americans largely descend from people who arrived after the country was already built. Black Americans descend from people who built it.</p>
-
-        <p>That's not a moral claim. It's a historical and demographic fact. And it matters when talking about who has legitimate claim to American identity and whose contributions deserve recognition.</p>
-
-        <h2>My Approach</h2>
-
-        <p>This is a one-person project. I document what I encounter when I encounter it. Some weeks that's a monument in Richmond. Some weeks it's an exhibition in DC. Some weeks it's a historical photo I came across.</p>
-
-        <p>I'm not trying to be comprehensive. I'm not competing with other heritage projects. I'm simply creating a record of what I find significant, preserving it digitally, and sharing it for anyone who wants to explore.</p>
-
-        <p>The goal is simple: contribute to a more complete understanding of who built America and what that means for how we see ourselves today.</p>
+        <p>Over time, patterns emerge. Contributions to infrastructure, legal frameworks, cultural innovation, institution-building. The archive shows these connections without having to explain them.</p>
 
         <div class="curator-signature">
             <p>— Ronnie Bailey<br>Richmond, VA<br>Est. 2024</p>
         </div>
     </section>
-
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <div class="footer-about">
-                <h3>The Freedmen Star</h3>
-                <p>A living archive documenting Black American continuity, contribution, and culture. Descendants of those who were here while the nation was being built, who remained through every era, whose lineage is unbroken.</p>
-            </div>
-
-            <div class="footer-links">
-                <h4>Connect</h4>
-                <a href="https://instagram.com/thefreedmenstar">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">Facebook</a>
-                <a href="#">Submit Documentation Lead</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 The Freedmen Star. Culture, Lineage, Legacy.</p>
-        </div>
-    </footer>
-</body>
-</html>
