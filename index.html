@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Documenting Black American continuity, contribution, and culture. A living archive of monuments, historical evidence, and cultural moments.">
-    <title>The Freedmen Star | Living Archive of Black American Heritage</title>
-    
+    <title>The Freedmen Star | Heritage & Cultural Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0a0a0a;
-            --charcoal: #1a1a1a;
-            --gray-dark: #2a2a2a;
-            --gray: #666666;
-            --gray-light: #999999;
-            --red: #d73027;
-            --gold: #d4af37;
-            --cream: #faf8f3;
-            --white: #ffffff;
+            --primary-dark: #1a1410;
+            --primary-brown: #3d2817;
+            --accent-gold: #d4a574;
+            --accent-burgundy: #6b2737;
+            --neutral-warm: #f5f1ed;
+            --neutral-mid: #e8dfd5;
+            --text-primary: #2a2320;
+            --text-secondary: #5a524c;
         }
 
         * {
@@ -30,772 +26,667 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--charcoal);
-            background: var(--cream);
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Source Serif 4', serif;
+            color: var(--text-primary);
+            background: var(--neutral-warm);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
+        /* Header - Embassy Style */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brown) 100%);
+            color: var(--neutral-warm);
+            padding: 0;
+            position: relative;
+            border-bottom: 3px solid var(--accent-gold);
         }
 
-        /* Header */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--red);
-            z-index: 1000;
+        .header-top {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.75rem 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
         }
 
-        .header-inner {
+        .header-main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 2.5rem 2rem 2rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 68px;
-        }
-
-        .logo-lockup {
-            display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
         }
 
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            background: var(--charcoal);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
+        .site-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .site-title h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+            color: var(--accent-gold);
+        }
+
+        .site-title .tagline {
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: var(--neutral-mid);
+            font-style: italic;
+        }
+
+        nav {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--gold);
-            flex-shrink: 0;
+            gap: 2.5rem;
         }
 
-        .logo-text {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.3px;
-        }
-
-        .main-nav a {
-            color: var(--gray-light);
+        nav a {
+            color: var(--neutral-warm);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            margin-left: 32px;
-            transition: color 0.2s;
-            text-transform: uppercase;
+            font-size: 1rem;
             letter-spacing: 0.5px;
-        }
-
-        .main-nav a:hover {
-            color: var(--red);
-        }
-
-        /* Hero */
-        .hero {
-            margin-top: 68px;
-            background: var(--black);
-            color: var(--cream);
+            font-weight: 400;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            padding-bottom: 2px;
         }
 
-        .hero-media {
-            height: 70vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-        }
-
-        .hero-overlay {
+        nav a::after {
+            content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent);
-            padding: 60px 24px 40px;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(26, 20, 16, 0.7), rgba(26, 20, 16, 0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233d2817" width="1200" height="600"/><g opacity="0.1"><path fill="%23d4a574" d="M0 300 L300 100 L600 300 L900 150 L1200 300 L1200 600 L0 600 Z"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--neutral-warm);
+            position: relative;
+            border-bottom: 1px solid var(--accent-gold);
         }
 
         .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
         }
 
-        .hero-title {
-            font-family: 'Libre Baskerville', serif;
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 16px;
-            line-height: 1.1;
+        .hero h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--gray-light);
-            max-width: 600px;
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--neutral-mid);
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--charcoal);
-            border-bottom: 2px solid var(--red);
-        }
-
-        .stats-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
+        .hero-stats {
             display: flex;
-            gap: 48px;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.3);
         }
 
         .stat {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
+            text-align: center;
         }
 
         .stat-number {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
-            font-size: 14px;
-            color: var(--gray-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--neutral-mid);
         }
 
-        /* Filter Bar */
-        .filter-bar {
-            background: var(--white);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 68px;
-            z-index: 50;
-        }
-
-        .filter-inner {
+        /* Main Navigation Cards */
+        .main-nav-section {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
+            padding: 4rem 2rem;
         }
 
-        .filter-btn {
-            padding: 8px 16px;
-            background: transparent;
-            border: 1px solid var(--gray-light);
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--black);
-            color: var(--gold);
-            border-color: var(--black);
-        }
-
-        /* Archive Grid */
-        .archive {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
-
-        .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .archive-item {
-            background: var(--white);
-            border-radius: 4px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .archive-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .item-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            background: var(--gray-dark);
-        }
-
-        .item-content {
-            padding: 20px;
-        }
-
-        .item-meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .item-type {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--red);
-            text-transform: uppercase;
+        .section-intro h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
             letter-spacing: 1px;
         }
 
-        .item-date {
-            font-size: 12px;
-            color: var(--gray-light);
+        .section-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
         }
 
-        .item-title {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 8px;
-            line-height: 1.3;
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .item-location {
-            font-size: 14px;
-            color: var(--gray);
-            margin-bottom: 12px;
+        .nav-card {
+            background: white;
+            border: 1px solid var(--neutral-mid);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .item-excerpt {
-            font-size: 15px;
-            color: var(--gray);
-            line-height: 1.6;
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent-gold);
+            transition: height 0.4s ease;
         }
 
-        /* Entry Page */
-        .entry-hero {
-            margin-top: 68px;
-            background: var(--black);
+        .nav-card:hover::before {
+            height: 100%;
         }
 
-        .entry-image {
-            width: 100%;
-            height: 60vh;
-            object-fit: contain;
-            background: var(--black);
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(26, 20, 16, 0.15);
+            border-color: var(--accent-gold);
         }
 
-        .entry-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
-
-        .entry-header {
-            margin-bottom: 40px;
-        }
-
-        .entry-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            color: var(--gray);
-        }
-
-        .meta-item strong {
-            color: var(--red);
-            font-weight: 600;
-            text-transform: uppercase;
+        .nav-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
             letter-spacing: 0.5px;
         }
 
-        .entry-title {
-            font-family: 'Libre Baskerville', serif;
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .entry-body {
-            font-size: 17px;
-            line-height: 1.75;
-            color: var(--charcoal);
-        }
-
-        .entry-body h2 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 24px;
-            margin: 40px 0 16px;
-            color: var(--black);
-        }
-
-        .entry-body p {
-            margin-bottom: 20px;
-        }
-
-        .entry-body strong {
-            color: var(--black);
-            font-weight: 600;
-        }
-
-        /* About Page */
-        .about-section {
-            max-width: 800px;
-            margin: 120px auto 80px;
-            padding: 0 24px;
-        }
-
-        .about-section h1 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 32px;
-        }
-
-        .mission-statement {
-            font-size: 20px;
-            line-height: 1.7;
-            color: var(--charcoal);
-            margin-bottom: 40px;
-            padding-left: 24px;
-            border-left: 4px solid var(--gold);
-        }
-
-        .about-section h2 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--black);
-            margin: 48px 0 16px;
-        }
-
-        .about-section p {
-            font-size: 17px;
-            line-height: 1.75;
-            color: var(--charcoal);
-            margin-bottom: 20px;
-        }
-
-        .about-section ul {
-            margin: 20px 0;
-            padding-left: 24px;
-        }
-
-        .about-section li {
-            margin-bottom: 12px;
+        .nav-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
-        .curator-signature {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        .nav-card-link {
+            color: var(--accent-burgundy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .nav-card-link:hover {
+            gap: 1rem;
+        }
+
+        .nav-card-link::after {
+            content: '→';
+            font-size: 1.2rem;
+        }
+
+        /* Featured Collection Preview */
+        .featured-section {
+            background: var(--primary-dark);
+            color: var(--neutral-warm);
+            padding: 5rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .featured-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .featured-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .featured-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--neutral-mid);
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            font-size: 0.9rem;
+            color: var(--neutral-mid);
+        }
+
+        .featured-meta span {
+            letter-spacing: 0.5px;
+        }
+
+        .featured-image {
+            position: relative;
+            aspect-ratio: 4/3;
+            background: var(--primary-brown);
+            border: 2px solid var(--accent-gold);
+            overflow: hidden;
+        }
+
+        .featured-image::after {
+            content: 'Archive Image';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(26, 20, 16, 0.8);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* Mission Statement */
+        .mission-section {
+            max-width: 1000px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .mission-section blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 300;
             font-style: italic;
-            color: var(--gray);
+            line-height: 1.6;
+            color: var(--primary-dark);
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 2rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .mission-section blockquote::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--accent-gold);
+            position: absolute;
+            left: -1rem;
+            top: -2rem;
+            opacity: 0.3;
         }
 
         /* Footer */
-        .site-footer {
-            background: var(--black);
-            color: var(--gray-light);
-            border-top: 2px solid var(--red);
-            padding: 48px 24px 32px;
+        footer {
+            background: var(--primary-dark);
+            color: var(--neutral-mid);
+            padding: 3rem 2rem 2rem;
+            margin-top: 5rem;
+            border-top: 3px solid var(--accent-gold);
         }
 
-        .footer-inner {
+        .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 60px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
         }
 
-        .footer-about h3 {
-            font-family: 'Libre Baskerville', serif;
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 16px;
+        .footer-about h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
         .footer-about p {
-            font-size: 15px;
             line-height: 1.7;
-            max-width: 500px;
+            font-size: 0.95rem;
         }
 
-        .footer-links h4 {
-            font-size: 12px;
-            text-transform: uppercase;
+        .footer-links h5 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
             letter-spacing: 1px;
-            color: var(--white);
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-weight: 500;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
         }
 
         .footer-links a {
-            display: block;
-            color: var(--gray-light);
+            color: var(--neutral-mid);
             text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 10px;
-            transition: color 0.2s;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--red);
+            color: var(--accent-gold);
         }
 
         .footer-bottom {
             max-width: 1400px;
-            margin: 40px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
             text-align: center;
-            font-size: 13px;
+            font-size: 0.85rem;
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-card {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .nav-card:nth-child(1) { animation-delay: 0.1s; }
+        .nav-card:nth-child(2) { animation-delay: 0.2s; }
+        .nav-card:nth-child(3) { animation-delay: 0.3s; }
+
         /* Responsive */
-        @media (max-width: 900px) {
-            .main-nav {
-                display: none;
+        @media (max-width: 968px) {
+            .header-main {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
             }
 
-            .stats-inner {
-                flex-wrap: wrap;
-                gap: 24px;
+            nav {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .archive-grid {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .featured-content {
                 grid-template-columns: 1fr;
             }
 
-            .footer-inner {
+            .footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 2rem;
             }
 
-            .hero-media {
-                height: 50vh;
+            .nav-cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HOMEPAGE -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="#" class="logo-lockup">
-                <div class="logo-mark">★</div>
-                <div class="logo-text">THE FREEDMEN STAR</div>
-            </a>
-            <nav class="main-nav">
+    <header>
+        <div class="header-main">
+            <div class="site-title">
+                <h1>THE FREEDMEN STAR</h1>
+            </div>
+            <nav>
                 <a href="#archive">Archive</a>
-                <a href="#timeline">Timeline</a>
-                <a href="about.html">About</a>
+                <a href="#stories">Stories</a>
+                <a href="#research">Research</a>
+                <a href="#about">About</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-media">
-            <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=1600" alt="Emancipation monument" class="hero-image">
-            <div class="hero-overlay">
-                <div class="hero-content">
-                    <h1 class="hero-title">THE FREEDMEN STAR</h1>
-                    <p class="hero-subtitle">Documenting Black American continuity, contribution, and culture</p>
-                </div>
+        <div class="hero-content">
+            <h2>Heritage & Cultural Documentation</h2>
+            <p>
+                Institutions. Innovations. Family lineages. Economic systems. Military service. 
+                Cultural expression. The material record of ADOS life across four centuries.
+            </p>
+        </div>
+    </section>
+
+    <section class="main-nav-section">
+        <div class="nav-cards">
+            <div class="nav-card">
+                <h4>Archive</h4>
+                <p>
+                    Photographs, documents, and materials organized into collections: 
+                    Builders & Innovators, Institutional Life, Military Service, 
+                    Cultural Expression, Family & Community.
+                </p>
+                <a href="#archive" class="nav-card-link">Browse</a>
+            </div>
+
+            <div class="nav-card">
+                <h4>Stories</h4>
+                <p>
+                    Research articles on economic ecosystems, institutional structures, 
+                    migration patterns, and cultural contributions. Primary sources 
+                    and archival evidence.
+                </p>
+                <a href="#stories" class="nav-card-link">Read</a>
+            </div>
+
+            <div class="nav-card">
+                <h4>Research</h4>
+                <p>
+                    Genealogical resources, census guides, data visualizations, 
+                    and regional directories. Reference materials and documentation tools.
+                </p>
+                <a href="#research" class="nav-card-link">Access</a>
             </div>
         </div>
     </section>
 
-    <div class="stats-bar">
-        <div class="stats-inner">
-            <div class="stat">
-                <div class="stat-number">267</div>
-                <div class="stat-label">Items Documented</div>
+    <section class="featured-section">
+        <div class="featured-content">
+            <div class="featured-text">
+                <h3>The Economic Ecosystem of Black Wall Street</h3>
+                <p>
+                    The interconnected network of financial institutions, businesses, and 
+                    mutual aid societies that sustained Tulsa's Greenwood District as a 
+                    self-contained economic territory from 1906 to 1921.
+                </p>
+                <p>
+                    Business directories, insurance records, and institutional documents 
+                    examining how parallel economic structures functioned as practical 
+                    governance systems during formal disenfranchisement.
+                </p>
+                <div class="featured-meta">
+                    <span>Research</span>
+                    <span>12,000 words</span>
+                    <span>32 sources</span>
+                </div>
+                <a href="#" class="cta-button">Read</a>
             </div>
-            <div class="stat">
-                <div class="stat-number">1662-2025</div>
-                <div class="stat-label">Timeline Span</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">18</div>
-                <div class="stat-label">States Covered</div>
-            </div>
+            <div class="featured-image"></div>
         </div>
-    </div>
+    </section>
 
-    <div class="filter-bar">
-        <div class="filter-inner">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Monuments</button>
-            <button class="filter-btn">Historical Photos</button>
-            <button class="filter-btn">Exhibitions</button>
-            <button class="filter-btn">Cultural Events</button>
-            <button class="filter-btn">Documents</button>
-        </div>
-    </div>
-
-    <main class="archive" id="archive">
-        <div class="archive-grid">
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600" alt="Emancipation monument" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Monument</span>
-                        <span class="item-date">Documented Jan 2025</span>
-                    </div>
-                    <h3 class="item-title">Emancipation and Freedom Monument</h3>
-                    <p class="item-location">Lincoln Park, Washington DC</p>
-                    <p class="item-excerpt">Controversial monument depicting enslaved man breaking chains. First monument dedicated to Lincoln, funded entirely by freedmen...</p>
-                </div>
-            </article>
-
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=600" alt="Historical military photo" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Historical Photo</span>
-                        <span class="item-date">1860s</span>
-                    </div>
-                    <h3 class="item-title">United States Colored Troops</h3>
-                    <p class="item-location">Civil War Era</p>
-                    <p class="item-excerpt">Nearly 200,000 Black men served in the Union Army and Navy during the Civil War. These are the soldiers who fought for their own freedom...</p>
-                </div>
-            </article>
-
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600" alt="Museum exhibit" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Exhibition</span>
-                        <span class="item-date">Visited Dec 2024</span>
-                    </div>
-                    <h3 class="item-title">National Museum of African American History</h3>
-                    <p class="item-location">Washington, DC</p>
-                    <p class="item-excerpt">Permanent collection showcasing 400 years of Black American history. Particularly powerful displays on Reconstruction era contributions...</p>
-                </div>
-            </article>
-
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600" alt="Monument detail" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Monument</span>
-                        <span class="item-date">Documented Jan 2025</span>
-                    </div>
-                    <h3 class="item-title">Family Reaching Forward</h3>
-                    <p class="item-location">Richmond, VA</p>
-                    <p class="item-excerpt">Monument depicting freedmen family moving forward after emancipation. Inscription: "It seemed like reaching for the sky..."</p>
-                </div>
-            </article>
-
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600" alt="Cultural event" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Cultural Event</span>
-                        <span class="item-date">Dec 2024</span>
-                    </div>
-                    <h3 class="item-title">Juneteenth Celebration</h3>
-                    <p class="item-location">Richmond, VA</p>
-                    <p class="item-excerpt">Community celebration marking emancipation. Music, food, oral histories shared. Continuity of tradition from 1865 to present...</p>
-                </div>
-            </article>
-
-            <article class="archive-item">
-                <img src="https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=600" alt="Historical document" class="item-image">
-                <div class="item-content">
-                    <div class="item-meta">
-                        <span class="item-type">Document</span>
-                        <span class="item-date">1865</span>
-                    </div>
-                    <h3 class="item-title">Freedmen's Bureau Records</h3>
-                    <p class="item-location">National Archives</p>
-                    <p class="item-excerpt">Official records documenting transition from slavery to freedom. Marriage certificates, labor contracts, educational records...</p>
-                </div>
-            </article>
-        </div>
-    </main>
-
-    <!-- INDIVIDUAL ENTRY PAGE (Hidden by default, shown when clicking item) -->
-    <div style="display: none;">
-        <section class="entry-hero">
-            <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=1600" alt="Emancipation monument full view" class="entry-image">
-        </section>
-
-        <article class="entry-content">
-            <header class="entry-header">
-                <div class="entry-meta">
-                    <div class="meta-item">
-                        <strong>Monument</strong>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Location:</strong> Lincoln Park, Washington DC
-                    </div>
-                    <div class="meta-item">
-                        <strong>Documented:</strong> January 2025
-                    </div>
-                </div>
-                <h1 class="entry-title">Emancipation and Freedom Monument</h1>
-            </header>
-
-            <div class="entry-body">
-                <p>This monument stands in Lincoln Park, Washington DC. Dedicated in 1876, it was the first monument to Abraham Lincoln and the first major public monument in the United States funded entirely by formerly enslaved people.</p>
-
-                <p>The inscription reads: "Freedom's Memorial. In grateful memory of Abraham Lincoln. This monument was erected by the Western Sanitary Commission of Saint Louis, Mo.: with funds contributed solely by emancipated citizens of the United States declared free by his proclamation January 1st, A.D. 1863."</p>
-
-                <h2>Historical Context</h2>
-
-                <p>What makes this monument significant is not just what it depicts, but <strong>who paid for it</strong>. Charlotte Scott, a formerly enslaved woman from Virginia, donated the first $5 in 1865 - the day after Lincoln's assassination. Over 11 years, freedmen across the country contributed to complete the monument.</p>
-
-                <p>The depiction itself has been controversial since its unveiling. Frederick Douglass, speaking at the dedication, questioned whether it truly represented freedom or merely the transition from bondage. The formerly enslaved man is shown breaking chains but still kneeling, which many interpret as subservient rather than triumphant.</p>
-
-                <h2>Why It Matters</h2>
-
-                <p>This monument represents <strong>agency</strong>. It wasn't commissioned by the government or white philanthropists. It was funded entirely by people who had been enslaved, who chose to memorialize not just Lincoln but their own emancipation.</p>
-
-                <p>The controversy around its imagery doesn't diminish its historical significance - it enhances it. It shows how freedmen engaged with their own representation from the very beginning, how they claimed the right to tell their story even when that story was complicated.</p>
-
-                <p>This is evidence of continuity. From 1865 forward, Black Americans have been actively documenting, memorializing, and asserting their place in this nation's history.</p>
-            </div>
-        </article>
-    </div>
-
-    <!-- ABOUT PAGE (Hidden by default) -->
-    <div style="display: none;">
-        <section class="about-section" id="about">
-            <h1>About The Freedmen Star</h1>
-
-            <div class="mission-statement">
-                <p>This is a living archive of Black American heritage - documented as encountered, preserved as evidence, presented without apology.</p>
-            </div>
-
-            <p>We are the continuous people. Not diaspora. Not immigrants. The descendants of enslaved people who were here while the nation was being built, who remained through every era, whose lineage is unbroken.</p>
-
-            <h2>What This Archive Documents</h2>
-
-            <ul>
-                <li><strong>Monuments and memorials</strong> to our contributions and our people</li>
-                <li><strong>Historical evidence</strong> of our presence and building from 1619 forward</li>
-                <li><strong>Cultural expressions and innovations</strong> that shaped American identity</li>
-                <li><strong>The continuous line</strong> from founding era to present day</li>
-            </ul>
-
-            <h2>What This Is Not</h2>
-
-            <p>This is not focused on victimhood. This is focused on what we built, created, and contributed.</p>
-
-            <p>This is not about the African diaspora. This is specifically about American Descendants of Slavery and post-emancipation Freedmen - those whose lineage is tied to U.S. soil.</p>
-
-            <p>This is not political advocacy or reparations activism. This is documentation. Evidence. Memory work.</p>
-
-            <h2>The Ideological Foundation</h2>
-
-            <p>Like Indigenous peoples have their nations and histories, like Palestinians document their continuous presence, we document ours. Not claiming the state or its violence - but claiming our contributions, our culture, our unbreakable line.</p>
-
-            <p>We are not part of "African-American" as a hyphenated identity suggesting dual belonging. We are Americans whose ancestors were forced here, who built this nation's infrastructure and culture, who remained through every era. Our lineage is continuous where most others' is not.</p>
-
-            <p>This is our story. Our evidence. Our legacy.</p>
-
-            <div class="curator-signature">
-                <p>— Ronnie, Curator<br>Richmond, VA<br>Est. 2024</p>
-            </div>
-        </section>
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-inner">
+    <footer>
+        <div class="footer-content">
             <div class="footer-about">
-                <h3>The Freedmen Star</h3>
-                <p>A living archive documenting Black American continuity, contribution, and culture. We are the continuous people - descendants of those who were here while the nation was being built, who remained through every era, whose lineage is unbroken.</p>
+                <h4>The Freedmen Star</h4>
+                <p>
+                    Heritage and cultural documentation. ADOS institutions, innovations, 
+                    and material culture from 1619 to present.
+                </p>
             </div>
 
             <div class="footer-links">
-                <h4>Connect</h4>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">Facebook</a>
-                <a href="#">Submit Documentation Lead</a>
+                <h5>Collections</h5>
+                <ul>
+                    <li><a href="#">Builders & Innovators</a></li>
+                    <li><a href="#">Institutional Life</a></li>
+                    <li><a href="#">Family & Community</a></li>
+                    <li><a href="#">Military Service</a></li>
+                    <li><a href="#">Cultural Expression</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h5>Resources</h5>
+                <ul>
+                    <li><a href="#">Research Guides</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Mission & Values</a></li>
+                </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 The Freedmen Star. Culture, Lineage, Legacy.</p>
+            <p>&copy; 2025 The Freedmen Star</p>
         </div>
     </footer>
 
     <script>
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                // In production, this would filter the grid items
-            });
-        });
-
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 68;
-                    const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Add subtle parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            if (scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>
