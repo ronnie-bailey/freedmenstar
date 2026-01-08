@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Freedmen Star</title>
+    <title>Freedmen Star | ADOS Heritage & Cultural Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0d0d0d;
             --card-bg: #1a1a1a;
             --text: #e8e8e8;
-            --text-dim: #a0a0a0;
+            --text-dim: #999;
             --accent: #d4a574;
+            --accent-red: #8b2635;
             --border: #2a2a2a;
         }
 
@@ -34,7 +35,6 @@
         /* Header */
         header {
             padding: 2rem;
-            text-align: center;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -43,184 +43,493 @@
             z-index: 100;
         }
 
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
             font-family: 'Crimson Pro', serif;
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 400;
             letter-spacing: 1px;
             color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .logo::before {
+            content: '★';
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .social-links a {
+            color: var(--text-dim);
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 900px;
+            margin: 5rem auto 4rem;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%231a1410" width="800" height="600"/%3E%3Cg opacity="0.15"%3E%3Cpath fill="%23d4a574" d="M100 300 L200 200 L300 300 L400 250 L500 300 L500 600 L100 600 Z"/%3E%3Ccircle cx="400" cy="200" r="80" fill="%23d4a574" opacity="0.1"/%3E%3C/g%3E%3C/svg%3E') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            line-height: 1.9;
+            letter-spacing: 0.3px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Collections Navigation */
+        .collections {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .collections h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .collection-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .collection-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .collection-preview {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #0a0a0a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collection-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .collection-item:hover .collection-preview img {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .collection-name {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+            letter-spacing: 0.5px;
             margin-bottom: 0.25rem;
         }
 
-        .tagline {
-            font-size: 0.85rem;
+        .collection-count {
+            font-size: 0.75rem;
             color: var(--text-dim);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 300;
         }
 
-        /* Feed */
-        .feed {
-            max-width: 1000px;
+        /* Main Content */
+        .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 0 2rem 4rem;
         }
 
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Post */
         .post {
             background: var(--card-bg);
-            margin-bottom: 2rem;
             border: 1px solid var(--border);
+            margin-bottom: 3rem;
             overflow: hidden;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s;
         }
 
         .post:hover {
             border-color: var(--accent);
         }
 
-        /* Post Image */
         .post-media {
             width: 100%;
-            position: relative;
             background: #0a0a0a;
         }
 
         .post-media img {
             width: 100%;
+            height: auto;
             display: block;
         }
 
-        .post-media.aspect-square {
-            aspect-ratio: 1;
+        .post-content {
+            padding: 2rem;
         }
 
-        .post-media.aspect-landscape {
-            aspect-ratio: 16/9;
-        }
-
-        .post-media.aspect-portrait {
-            aspect-ratio: 3/4;
-        }
-
-        /* Post Content */
-        .post-body {
-            padding: 1.5rem;
-        }
-
-        .post-date {
+        .post-meta {
             font-size: 0.75rem;
             color: var(--text-dim);
-            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
-            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
         }
 
-        .post-title {
+        .post h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 500;
             color: var(--text);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
             line-height: 1.3;
         }
 
         .post-text {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--text-dim);
         }
 
         .post-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .post-text p:last-child {
             margin-bottom: 0;
         }
 
-        /* Text-only posts */
-        .post-text-only {
-            padding: 2.5rem 2rem;
+        /* Newsletter */
+        .newsletter {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .post-text-only .post-title {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Link posts */
-        .post-link {
-            display: block;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-top: 1rem;
+        .newsletter h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
             font-weight: 500;
-        }
-
-        .post-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Tags */
-        .post-tags {
-            margin-top: 1.25rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.8rem;
             color: var(--accent);
-            background: rgba(212, 165, 116, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 3px;
+            margin-bottom: 0.75rem;
+        }
+
+        .newsletter p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.85rem 1.25rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .newsletter-form button {
+            padding: 0.85rem 2rem;
+            background: var(--accent);
+            border: none;
+            color: var(--bg);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-form button:hover {
+            opacity: 0.85;
         }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
-            padding: 2rem;
-            text-align: center;
+            padding: 3rem 2rem;
             margin-top: 4rem;
         }
 
-        footer p {
-            font-size: 0.8rem;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-about h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-about p {
             color: var(--text-dim);
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h5 {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 1.5rem 1rem;
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
             }
 
-            .logo {
-                font-size: 1.5rem;
+            nav {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .feed {
-                padding: 2rem 1rem;
+            .social-links {
+                border-left: none;
+                border-top: 1px solid var(--border);
+                padding-left: 0;
+                padding-top: 1rem;
+                margin-left: 0;
             }
 
-            .post-body {
-                padding: 1.25rem;
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .post-text-only {
+            .hero {
+                margin: 3rem auto 2rem;
+            }
+
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .post-content {
+                padding: 1.5rem;
+            }
+
+            .newsletter {
                 padding: 2rem 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
             }
         }
 
-        /* Subtle animations */
-        .post {
+        /* Animations */
+        .post, .collection-item {
             animation: fadeIn 0.6s ease;
         }
 
@@ -238,116 +547,289 @@
 </head>
 <body>
     <header>
-        <h1 class="logo">THE FREEDMEN STAR</h1>
-        <p class="tagline">Culture, Lineage, Legacy</p>
+        <div class="header-content">
+            <div class="logo">FREEDMEN STAR</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#collections">Collections</a>
+                <a href="#research">Research</a>
+                <a href="#about">About</a>
+                <div class="social-links">
+                    <a href="https://instagram.com/thefreedmenstar" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/@thefreedmenstar" target="_blank" title="TikTok">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="feed">
-        <!-- Image Post with Caption -->
-        <article class="post">
-            <div class="post-media aspect-landscape">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect fill='%230a0a0a' width='1600' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='24' font-family='serif' opacity='0.3'%3ECivil Rights Monument%3C/text%3E%3C/svg%3E" alt="Monument">
+    <section class="hero">
+        <h1>Freedmen Star</h1>
+        <p class="tagline">Culture, Lineage, Legacy</p>
+        <p>
+            An independent archival and educational project preserving the history, culture, and 
+            contributions of American Descendants of Slavery. Through photographs, documents, 
+            research, and storytelling, we document the institutions built, innovations created, 
+            and cultural traditions sustained across generations—creating a comprehensive record 
+            for present and future understanding.
+        </p>
+    </section>
+
+    <section class="collections" id="collections">
+        <h2>Explore the Archive</h2>
+        <div class="collections-grid">
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EHistorical Documents%3C/text%3E%3C/svg%3E" alt="Documents preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Documents</div>
+                    <div class="collection-count">Historical records</div>
+                </div>
             </div>
-            <div class="post-body">
-                <div class="post-date">April 28, 2025</div>
-                <p class="post-text">
-                    Honoring those who broke barriers and dreamed beyond them. Their courage opened doors. It's up to us to build the bridges.
-                </p>
-                <div class="post-tags">
-                    <span class="tag">Legacy</span>
-                    <span class="tag">Civil Rights</span>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EArchival Photography%3C/text%3E%3C/svg%3E" alt="Photographs preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Photographs</div>
+                    <div class="collection-count">Visual archive</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23d4a574' opacity='0.2'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EMusic%3C/text%3E%3C/svg%3E" alt="Music preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Music</div>
+                    <div class="collection-count">Audio recordings</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Crect x='100' y='80' width='200' height='140' fill='%23d4a574' opacity='0.2'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EFilms%3C/text%3E%3C/svg%3E" alt="Films preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Films</div>
+                    <div class="collection-count">Video content</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Crect x='80' y='60' width='240' height='180' fill='%23d4a574' opacity='0.1'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EBooks%3C/text%3E%3C/svg%3E" alt="Books preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Books</div>
+                    <div class="collection-count">Publications</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Cpath d='M150 100 L250 100 L200 200 Z' fill='%23d4a574' opacity='0.2'/%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EArtworks%3C/text%3E%3C/svg%3E" alt="Artworks preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Artworks</div>
+                    <div class="collection-count">Visual art</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Ccircle cx='120' cy='120' r='30' fill='%23d4a574' opacity='0.2'/%3E%3Ccircle cx='280' cy='180' r='30' fill='%23d4a574' opacity='0.2'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='14' font-family='serif' opacity='0.4'%3EOral Histories%3C/text%3E%3C/svg%3E" alt="Oral Histories preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Oral Histories</div>
+                    <div class="collection-count">Testimonies</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Cpath d='M100 200 L150 100 L200 150 L250 80 L300 130' stroke='%23d4a574' stroke-width='3' fill='none' opacity='0.3'/%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EResearch%3C/text%3E%3C/svg%3E" alt="Research preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Research</div>
+                    <div class="collection-count">Studies & analysis</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Crect x='100' y='80' width='200' height='140' fill='none' stroke='%23d4a574' stroke-width='4' opacity='0.3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='14' font-family='serif' opacity='0.4'%3EExhibitions%3C/text%3E%3C/svg%3E" alt="Exhibitions preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Exhibitions</div>
+                    <div class="collection-count">Curated displays</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Crect x='80' y='60' width='240' height='180' fill='%23d4a574' opacity='0.08'/%3E%3Cline x1='90' y1='80' x2='310' y2='80' stroke='%23d4a574' stroke-width='2' opacity='0.3'/%3E%3Cline x1='90' y1='110' x2='310' y2='110' stroke='%23d4a574' stroke-width='2' opacity='0.3'/%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3ENews%3C/text%3E%3C/svg%3E" alt="News preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">News</div>
+                    <div class="collection-count">Current coverage</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Crect x='120' y='100' width='160' height='100' fill='%23d4a574' opacity='0.15'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='14' font-family='serif' opacity='0.4'%3EPresentations%3C/text%3E%3C/svg%3E" alt="Presentations preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Presentations</div>
+                    <div class="collection-count">Talks & lectures</div>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <div class="collection-preview">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1410' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='70' fill='none' stroke='%23d4a574' stroke-width='3' opacity='0.3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='16' font-family='serif' opacity='0.4'%3EEvents%3C/text%3E%3C/svg%3E" alt="Events preview">
+                </div>
+                <div class="collection-info">
+                    <div class="collection-name">Events</div>
+                    <div class="collection-count">Programs & gatherings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">Recent Updates</h2>
+
+        <!-- Featured Post -->
+        <article class="post">
+            <div class="post-media">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Crect fill='%230a0a0a' width='1200' height='675'/%3E%3Cg opacity='0.2'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='24' font-family='serif'%3EMonument%3C/text%3E%3C/g%3E%3C/svg%3E" alt="Historical monument">
+            </div>
+            <div class="post-content">
+                <div class="post-meta">April 28, 2025</div>
+                <h2>Those Who Broke Barriers</h2>
+                <div class="post-text">
+                    <p>Honoring those who broke barriers and dreamed beyond them. Their courage opened doors. It's up to us to build the bridges.</p>
+                    <p>This monument stands as testament to the generations who created institutions, built economic systems, and sustained culture under conditions designed to prevent exactly that.</p>
                 </div>
             </div>
         </article>
 
-        <!-- Text Post with Title -->
+        <!-- Text Post -->
         <article class="post">
-            <div class="post-body post-text-only">
-                <div class="post-date">May 26, 2025</div>
-                <h2 class="post-title">The Origins of Memorial Day</h2>
+            <div class="post-content">
+                <div class="post-meta">May 26, 2025</div>
+                <h2>The True Origins of Memorial Day</h2>
                 <div class="post-text">
                     <p>Memorial Day's origins are deeply intertwined with the efforts of freedmen, particularly in Charleston, South Carolina.</p>
                     <p>On May 1, 1865, a group of newly emancipated slaves, along with white missionaries, organized a ceremony to honor and properly bury Union soldiers who had died in a Confederate prison camp. This event, which included a parade, speeches, and the placement of flowers on graves, is considered the first Memorial Day observance.</p>
-                </div>
-                <div class="post-tags">
-                    <span class="tag">Memorial Day</span>
-                    <span class="tag">Charleston</span>
-                    <span class="tag">1865</span>
+                    <p>The ceremony drew over 10,000 people, most of them newly freed Black Americans. They understood what these soldiers had died for. They knew what their sacrifice meant. And they made sure those men were honored properly.</p>
                 </div>
             </div>
         </article>
 
-        <!-- Image Post - Square -->
-        <article class="post">
-            <div class="post-media aspect-square">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Crect fill='%230a0a0a' width='1000' height='1000'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='20' font-family='serif' opacity='0.3'%3EUSCT Regiment%3C/text%3E%3C/svg%3E" alt="Historical photograph">
-            </div>
-            <div class="post-body">
-                <div class="post-date">May 26, 2025</div>
-                <p class="post-text">
-                    United States Colored Troops, photographed during the Civil War. Over 180,000 Black men served in the Union Army, constituting nearly 10% of the Union's total military force.
-                </p>
-                <div class="post-tags">
-                    <span class="tag">Military Service</span>
-                    <span class="tag">USCT</span>
-                    <span class="tag">Civil War</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Long-form Post -->
-        <article class="post">
-            <div class="post-body post-text-only">
-                <div class="post-date">June 19, 2025</div>
-                <h2 class="post-title">Juneteenth: The Delayed Liberation</h2>
-                <div class="post-text">
-                    <p>Commemorating June 19, 1865, when the last enslaved Black Americans in Galveston, Texas, learned of their freedom—over two years after the Emancipation Proclamation.</p>
-                    <p>You'll notice the official Juneteenth flag is red, white, and blue, reflecting that those freed were American citizens. It differs from the Pan-African red, black, and green, which honors African heritage.</p>
-                    <p>This distinction matters. Juneteenth celebrates American liberation, while Pan-African colors represent continental solidarity. Both are valid. Both tell different parts of the story.</p>
-                </div>
-                <div class="post-tags">
-                    <span class="tag">Juneteenth</span>
-                    <span class="tag">Freedom Day</span>
-                    <span class="tag">Texas</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Simple Image Post -->
-        <article class="post">
-            <div class="post-media aspect-landscape">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect fill='%230a0a0a' width='1600' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23d4a574' font-size='24' font-family='serif' opacity='0.3'%3ENMAAHC%3C/text%3E%3C/svg%3E" alt="Museum">
-            </div>
-            <div class="post-body">
-                <div class="post-date">September 24, 2025</div>
-                <p class="post-text">
-                    Today marks the 9th anniversary of the National African American Museum.
-                </p>
-            </div>
-        </article>
-
-        <!-- Text with Link -->
-        <article class="post">
-            <div class="post-body post-text-only">
-                <div class="post-date">January 7, 2026</div>
-                <h2 class="post-title">Economic Ecosystems: Black Wall Street</h2>
-                <div class="post-text">
-                    <p>The interconnected network of financial institutions, businesses, and mutual aid societies that sustained Tulsa's Greenwood District as a self-contained economic territory from 1906 to 1921.</p>
-                    <p>Business directories, insurance records, and institutional documents examining how parallel economic structures functioned as practical governance systems during formal disenfranchisement.</p>
-                </div>
-                <a href="#" class="post-link">Read full research →</a>
-                <div class="post-tags">
-                    <span class="tag">Economic History</span>
-                    <span class="tag">Tulsa</span>
-                    <span class="tag">Black Wall Street</span>
-                </div>
-            </div>
-        </article>
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h3>Stay Connected</h3>
+            <p>Receive research, stories, and archival updates directly to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2025 THE FREEDMEN STAR</p>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>Freedmen Star</h4>
+                <p>
+                    An independent archival and educational project documenting ADOS heritage. 
+                    Based in Richmond, Virginia, this work preserves the history, culture, and 
+                    contributions that have shaped American life through careful research, 
+                    collection, and storytelling.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h5>Connect</h5>
+                <ul>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://instagram.com/thefreedmenstar" target="_blank">Instagram</a></li>
+                    <li><a href="https://tiktok.com/@thefreedmenstar" target="_blank">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Freedmen Star. Richmond, Virginia.</p>
+            <div class="footer-social">
+                <a href="https://instagram.com/thefreedmenstar" target="_blank" title="Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://tiktok.com/@thefreedmenstar" target="_blank" title="TikTok">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                </a>
+                <a href="#rss" title="RSS Feed">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Newsletter form handling
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Newsletter signup functionality would connect to your email service here');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Collection item click handling
+        document.querySelectorAll('.collection-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const collectionName = this.querySelector('.collection-name').textContent;
+                alert(`${collectionName} collection - content will be added here`);
+            });
+        });
+    </script>
 </body>
 </html>
